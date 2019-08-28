@@ -3,6 +3,6 @@
 ################################################################################
 
 /.vs
-/ConsoleApplication/obj
-/ConsoleApplication/bin
 /packages/Autofac.4.9.4
+*/obj
+*/bin
