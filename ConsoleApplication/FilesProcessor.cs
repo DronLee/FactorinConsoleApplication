@@ -80,7 +80,7 @@ namespace ConsoleApplication
                         oldFiles.Add(nowFile);
                     }
                 if (_running)
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
             }
         }
 
