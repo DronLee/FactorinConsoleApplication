@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
+using System.Linq;
 using System.Text;
 using ConsoleApplication.Operations;
 
@@ -45,12 +45,9 @@ namespace ConsoleApplication
         /// <returns>Результаты обработки файла.</returns>
         public string[] GetResult(string filePath)
         {
-            List<string> result = new List<string>();
-            foreach (var operation in _operations)
-                result.Add(string.Format(_resultPattern,
-                    Path.GetFileName(filePath),
-                    operation.GetResult(File.ReadAllText(filePath, _encoding))));
-            return result.ToArray();
+            var fileName = Path.GetFileName(filePath);
+            var content = File.ReadAllText(filePath, _encoding);
+            return _operations.Select(o => string.Format(_resultPattern, fileName, o.GetResult(content))).ToArray();
         }
     }
 }
